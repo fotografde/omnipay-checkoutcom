@@ -1,0 +1,39 @@
+{
+    "name": "fotografde/omnipay-checkoutcom",
+    "type": "library",
+    "description": "Checkout.com driver for the Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "checkoutcom"
+    ],
+    "homepage": "https://github.com/fotografde/omnipay-checkoutcom",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco Beinbrech",
+            "email": "marco.beinbrech@fotograf.de"
+        },
+        {
+            "name": "Omnipay Contributors",
+            "homepage": "https://github.com/thephpleague/omnipay-stripe/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Checkoutcom\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}
