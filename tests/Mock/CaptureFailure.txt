@@ -1,16 +1,31 @@
-HTTP/1.1 400 Bad Request
-Server: nginx
-Date: Sun, 05 May 2013 08:52:09 GMT
-Content-Type: application/json;charset=utf-8
-Content-Length: 127
-Connection: keep-alive
-Cache-Control: no-cache, no-store
-Access-Control-Max-Age: 300
-Access-Control-Allow-Credentials: true
+HTTP/1.1 200 OK
+Connection: close
+Date: Sat, 16 Feb 2013 04:23:27 GMT
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+Content-Type: text/html
+Content-Length: 697
+Cache-Control: private, must-revalidate, max-age=0
+Expires: Tue, 01 Jan 1980 00:00:00 GMT
 
-{
-  "error": {
-    "type": "invalid_request_error",
-    "message": "Charge ch_1lvgjcQgrNWUuZ has already been captured."
-  }
-}
+<ccTxnResponseV1 xmlns="http://www.optimalpayments.com/creditcard/xmlschema/v1">
+  <confirmationNumber>9988775</confirmationNumber>
+  <decision>ERROR</decision>
+  <code>3203</code>
+  <actionCode>M</actionCode>
+  <description>The authorization is either fully settled or cancelled.</description>
+  <detail>
+    <tag>InternalResponseCode</tag>
+    <value>204</value>
+  </detail>
+  <detail>
+    <tag>SubErrorCode</tag>
+    <value>0</value>
+  </detail>
+  <detail>
+    <tag>InternalResponseDescription</tag>
+    <value>Authorization is either fully settled or canceled.</value>
+  </detail>
+  <txnTime>2013-04-17T08:02:48.092-04:00</txnTime>
+  <duplicateFound>false</duplicateFound>
+</ccTxnResponseV1>

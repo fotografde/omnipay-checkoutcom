@@ -16,14 +16,10 @@
         {
             "name": "Marco Beinbrech",
             "email": "marco.beinbrech@fotograf.de"
-        },
-        {
-            "name": "Omnipay Contributors",
-            "homepage": "https://github.com/thephpleague/omnipay-stripe/contributors"
         }
     ],
     "autoload": {
-        "psr-4": { "Omnipay\\Checkoutcom\\" : "src/" }
+        "psr-4": { "Omnipay\\CheckoutCom\\" : "src/" }
     },
     "require": {
         "omnipay/common": "~2.0"

@@ -1,100 +1,75 @@
 <?php
-/**
- * Checkout.com Response
- */
 
-namespace Omnipay\Checkoutcom\Message;
+namespace Omnipay\CheckoutCom\Message;
 
+use Omnipay\CheckoutCom\Gateway;
 use Omnipay\Common\Message\AbstractResponse;
+use Omnipay\Common\Message\RequestInterface;
+use Omnipay\Common\Exception\InvalidResponseException;
 
 /**
- * Checkout.com Response
- *
- * This is the response class for all Checkout.com requests.
- *
- * @see \Omnipay\Checkoutcom\Gateway
+ * NetBanx Response
  */
 class Response extends AbstractResponse
 {
     /**
-     * Is the transaction successful?
+     * Constructor
+     *
+     * @param  RequestInterface         $request
+     * @param  string                   $data
+     * @throws InvalidResponseException
+     */
+    public function __construct(RequestInterface $request, $data)
+    {
+        $this->request = $request;
+
+        try {
+            $this->data = new \SimpleXMLElement($data);
+        } catch (\Exception $e) {
+            throw new InvalidResponseException();
+        }
+    }
+
+    /**
+     * Whether or not response is successful
      *
      * @return bool
      */
     public function isSuccessful()
     {
-        return !isset($this->data['error']);
+        $decisionOk = Gateway::DECISION_ACCEPTED === (string) $this->data->decision;
+        $codeOk = Gateway::CODE_OK === (string) $this->data->code;
+
+        return $decisionOk && $codeOk;
     }
 
     /**
-     * Get the transaction reference.
+     * Get transaction reference
      *
-     * @return string|null
+     * @return string
      */
     public function getTransactionReference()
     {
-        if (isset($this->data['object']) && 'charge' === $this->data['object']) {
-            return $this->data['id'];
-        }
-
-        return null;
+        return (string) $this->data->confirmationNumber;
     }
 
     /**
-     * Get a card reference, for createCard or createCustomer requests.
+     * Get card reference
      *
-     * @return string|null
+     * @return string
      */
     public function getCardReference()
     {
-        if (isset($this->data['object']) && 'customer' === $this->data['object']) {
-            return $this->data['id'];
-        }
-
-        return null;
+        return (string) $this->data->confirmationNumber;
     }
 
     /**
-     * Get a token, for createCard requests.
+     * Get message from responce
      *
-     * @return string|null
-     */
-    public function getToken()
-    {
-        if (isset($this->data['object']) && 'token' === $this->data['object']) {
-            return $this->data['id'];
-        }
-
-        return null;
-    }
-
-    /**
-     * Get the card data from the response.
-     *
-     * @return array|null
-     */
-    public function getCard()
-    {
-        if (isset($this->data['card'])) {
-            return $this->data['card'];
-        }
-
-        return null;
-    }
-
-    /**
-     * Get the error message from the response.
-     *
-     * Returns null if the request was successful.
-     *
-     * @return string|null
+     * @return string
      */
     public function getMessage()
     {
-        if (!$this->isSuccessful()) {
-            return $this->data['error']['message'];
-        }
-
-        return null;
+        return (string) $this->data->description;
     }
 }
