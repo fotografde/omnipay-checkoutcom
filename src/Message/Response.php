@@ -1,75 +1,54 @@
 <?php
+/**
+ * CheckoutCom Response
+ */
 
 namespace Omnipay\CheckoutCom\Message;
 
-use Omnipay\CheckoutCom\Gateway;
 use Omnipay\Common\Message\AbstractResponse;
-use Omnipay\Common\Message\RequestInterface;
-use Omnipay\Common\Exception\InvalidResponseException;
 
 /**
- * NetBanx Response
+ * CheckoutCom Response
+ *
+ * This is the response class for all CheckoutCom requests.
+ *
+ * @see \Omnipay\CheckoutCom\Gateway
  */
 class Response extends AbstractResponse
 {
     /**
-     * Constructor
-     *
-     * @param  RequestInterface         $request
-     * @param  string                   $data
-     * @throws InvalidResponseException
-     */
-    public function __construct(RequestInterface $request, $data)
-    {
-        $this->request = $request;
-
-        try {
-            $this->data = new \SimpleXMLElement($data);
-        } catch (\Exception $e) {
-            throw new InvalidResponseException();
-        }
-    }
-
-    /**
-     * Whether or not response is successful
+     * Is the transaction successful?
      *
      * @return bool
      */
     public function isSuccessful()
     {
-        $decisionOk = Gateway::DECISION_ACCEPTED === (string) $this->data->decision;
-        $codeOk = Gateway::CODE_OK === (string) $this->data->code;
-
-        return $decisionOk && $codeOk;
+        return !isset($this->data['errorCode']);
     }
 
     /**
-     * Get transaction reference
+     * Get a token, for createCard requests.
      *
-     * @return string
+     * @return string|null
      */
-    public function getTransactionReference()
+    public function getToken()
     {
-        return (string) $this->data->confirmationNumber;
+		return $this->data['id'];
     }
 
     /**
-     * Get card reference
+     * Get the error message from the response.
      *
-     * @return string
-     */
-    public function getCardReference()
-    {
-        return (string) $this->data->confirmationNumber;
-    }
-
-    /**
-     * Get message from responce
+     * Returns null if the request was successful.
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage()
     {
-        return (string) $this->data->description;
+        if (!$this->isSuccessful()) {
+            return $this->data['errorCode'].': '.$this->data['message'];
+        }
+
+        return null;
     }
 }

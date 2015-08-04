@@ -19,19 +19,33 @@ class Gateway extends AbstractGateway
         return 'CheckoutCom';
     }
 
-    /**
-     * Get default parameters
-     *
-     * @return array
-     */
-    public function getDefaultParameters()
-    {
-        return array(
-            'merchantId' => '',
-            'merchantPassword' => '',
-            'testMode' => false,
-        );
-    }
+	public function getDefaultParameters()
+	{
+		return array(
+			'secretApiKey' => '',
+			'publicApiKey' => '',
+		);
+	}
+
+	public function getSecretApiKey()
+	{
+		return $this->getParameter('secretApiKey');
+	}
+
+	public function setSecretApiKey($value)
+	{
+		return $this->setParameter('secretApiKey', $value);
+	}
+
+	public function getPublicApiKey()
+	{
+		return $this->getParameter('publicApiKey');
+	}
+
+	public function setPublicApiKey($value)
+	{
+		return $this->setParameter('publicApiKey', $value);
+	}
 
     /**
      * Create a new charge.
@@ -54,47 +68,4 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\CheckoutCom\Message\AuthorizeRequest', $parameters);
     }
-
-    /**
-     * Setter for Merchant Id
-     *
-     * @param string $value
-     * @return $this
-     */
-    public function setMerchantId($value)
-    {
-        return $this->setParameter('merchantId', $value);
-    }
-
-    /**
-     * Getter for Merchant Id
-     *
-     * @return string
-     */
-    public function getMerchantId()
-    {
-        return $this->getParameter('merchantId');
-    }
-
-    /**
-     * Setter for Merchant Password
-     *
-     * @param string $value
-     * @return $this
-     */
-    public function setMerchantPassword($value)
-    {
-        return $this->setParameter('merchantPassword', $value);
-    }
-
-    /**
-     * Getter for Merchant Password
-     *
-     * @return string
-     */
-    public function getMerchantPassword()
-    {
-        return $this->getParameter('merchantPassword');
-    }
-
 }

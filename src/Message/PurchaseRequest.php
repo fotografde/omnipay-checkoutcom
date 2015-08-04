@@ -1,29 +1,22 @@
 <?php
+/**
+ * CheckoutCom Purchase Request
+ */
 
 namespace Omnipay\CheckoutCom\Message;
 
-use Omnipay\Common\Message\AbstractRequest;
-
-/**
- * Dummy Authorize Request
- */
 class PurchaseRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('amount', 'card');
+        $data = parent::getData();
+        $data['autoCapture'] = 1;
 
-        $this->getCard()->validate();
-
-        return array('amount' => $this->getAmount());
+        return $data;
     }
 
-    public function sendData($data)
-    {
-        $data['reference'] = uniqid();
-        $data['success'] = 0 === substr($this->getCard()->getNumber(), -1, 1) % 2;
-        $data['message'] = $data['success'] ? 'Success' : 'Failure';
-
-        return $this->response = new Response($this, $data);
-    }
+	public function getEndpoint()
+	{
+		return parent::getEndpoint().'/tokens/payment';
+	}
 }
