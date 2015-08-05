@@ -47,10 +47,19 @@ another token, which you can use to capture the payment.
 Start by following the standard Checkout.com JS guide here:
 [http://sandbox.checkout.com/js/v1/docs/Checkout.js_Manual_Sandbox.pdf](http://sandbox.checkout.com/js/v1/docs/Checkout.js_Manual_Sandbox.pdf)
 
+First Authorize:
 ```php
 $response = $gateway->authorize(['amount' => $amount, 'currency' => $currency])->send();
 if ($response->isSuccessful()) {
     $token = $response->getToken();
+}
+```
+
+Then Capture:
+```php
+$response = $gateway->caputure(['amount' => $amount, 'transactionReference' => $token])->send();
+if ($response->isSuccessful()) {
+    // approve Order
 }
 ```
 

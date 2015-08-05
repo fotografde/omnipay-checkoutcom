@@ -53,9 +53,9 @@ class Gateway extends AbstractGateway
      * @param array An array of options
      * @return \Omnipay\ResponseInterface
      */
-    public function purchase(array $parameters = array())
+    public function authorize(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\CheckoutCom\Message\PurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\CheckoutCom\Message\AuthorizeRequest', $parameters);
     }
 
     /**
@@ -64,8 +64,8 @@ class Gateway extends AbstractGateway
      * @param array An array of options
      * @return \Omnipay\ResponseInterface
      */
-    public function authorize(array $parameters = array())
+    public function capture(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\CheckoutCom\Message\AuthorizeRequest', $parameters);
+        return $this->createRequest('\Omnipay\CheckoutCom\Message\CaptureRequest', $parameters);
     }
 }

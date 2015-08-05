@@ -5,7 +5,7 @@
 
 namespace Omnipay\CheckoutCom\Message;
 
-class PurchaseRequest extends AbstractRequest
+class PurchaseRequest extends AuthorizeRequest
 {
     public function getData()
     {
@@ -13,10 +13,5 @@ class PurchaseRequest extends AbstractRequest
         $data['autoCapture'] = 1;
 
         return $data;
-    }
-
-    public function getEndpoint()
-    {
-        return parent::getEndpoint() . '/tokens/payment';
     }
 }
