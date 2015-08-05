@@ -22,6 +22,14 @@ class PurchaseRequest extends AbstractRequest
         $data['description'] = $this->getDescription();
         $data['metadata'] = $this->getMetadata();
 
+        if($udf = array_values($this->getUdf())) {
+            $data['udf1'] = $udf[0];
+            $data['udf2'] = isset($udf[1]) ? $udf[1] : null;
+            $data['udf3'] = isset($udf[2]) ? $udf[2] : null;
+            $data['udf4'] = isset($udf[3]) ? $udf[3] : null;
+            $data['udf5'] = isset($udf[4]) ? $udf[4] : null;
+        }
+
 //        if ($this->getCardReference()) {
 //            $data['customer'] = $this->getCardReference();
 //        } elseif ($this->getToken()) {

@@ -58,6 +58,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('metadata', $value);
     }
 
+    public function getUdf()
+    {
+        return $this->getParameter('udf');
+    }
+
+    public function setUdf($value)
+    {
+        return $this->setParameter('udf', $value);
+    }
+
     public function sendData($data)
     {
         // don't throw exceptions for 4xx errors
@@ -74,7 +84,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             $this->getHttpMethod(),
             $this->getEndpoint(),
             null,
-            json_encode($data)
+            !empty($data) ? json_encode($data) : null
         );
 
         $httpRequest
