@@ -17,23 +17,13 @@ use Omnipay\Common\Message\AbstractResponse;
 class Response extends AbstractResponse
 {
     /**
-     * Is the transaction successful?
-     *
-     * @return bool
-     */
-    public function isSuccessful()
-    {
-        return !isset($this->data['errorCode']);
-    }
-
-    /**
      * Get a token, for createCard requests.
      *
      * @return string|null
      */
     public function getToken()
     {
-		return $this->data['id'];
+        return $this->data['id'];
     }
 
     /**
@@ -46,9 +36,19 @@ class Response extends AbstractResponse
     public function getMessage()
     {
         if (!$this->isSuccessful()) {
-            return $this->data['errorCode'].': '.$this->data['message'];
+            return $this->data['errorCode'] . ': ' . $this->data['message'];
         }
 
         return null;
+    }
+
+    /**
+     * Is the transaction successful?
+     *
+     * @return bool
+     */
+    public function isSuccessful()
+    {
+        return !isset($this->data['errorCode']);
     }
 }

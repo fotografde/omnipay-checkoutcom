@@ -84,8 +84,8 @@ class AuthorizeRequest extends AbstractRequest
         return $data;
     }
 
-	public function getEndpoint()
-	{
-		return parent::getEndpoint().'/tokens/payment';
-	}
+    public function getEndpoint()
+    {
+        return parent::getEndpoint() . '/tokens/payment';
+    }
 }

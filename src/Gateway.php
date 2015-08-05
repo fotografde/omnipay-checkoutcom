@@ -19,33 +19,33 @@ class Gateway extends AbstractGateway
         return 'CheckoutCom';
     }
 
-	public function getDefaultParameters()
-	{
-		return array(
-			'secretApiKey' => '',
-			'publicApiKey' => '',
-		);
-	}
+    public function getDefaultParameters()
+    {
+        return array(
+            'secretApiKey' => '',
+            'publicApiKey' => '',
+        );
+    }
 
-	public function getSecretApiKey()
-	{
-		return $this->getParameter('secretApiKey');
-	}
+    public function getSecretApiKey()
+    {
+        return $this->getParameter('secretApiKey');
+    }
 
-	public function setSecretApiKey($value)
-	{
-		return $this->setParameter('secretApiKey', $value);
-	}
+    public function setSecretApiKey($value)
+    {
+        return $this->setParameter('secretApiKey', $value);
+    }
 
-	public function getPublicApiKey()
-	{
-		return $this->getParameter('publicApiKey');
-	}
+    public function getPublicApiKey()
+    {
+        return $this->getParameter('publicApiKey');
+    }
 
-	public function setPublicApiKey($value)
-	{
-		return $this->setParameter('publicApiKey', $value);
-	}
+    public function setPublicApiKey($value)
+    {
+        return $this->setParameter('publicApiKey', $value);
+    }
 
     /**
      * Create a new charge.

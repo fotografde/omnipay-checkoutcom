@@ -2,7 +2,6 @@
 
 namespace Omnipay\CheckoutCom;
 
-use Omnipay\Common\CreditCard;
 use Omnipay\Tests\GatewayTestCase;
 
 class GatewayTest extends GatewayTestCase

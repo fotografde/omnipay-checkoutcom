@@ -39,46 +39,21 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      * @var string URL
      */
     protected $liveEndpoint = 'https://sandbox.checkout.com/api2/v2'; //https://api2.checkout.com/v2
-	protected $testEndpoint = 'https://sandbox.checkout.com/api2/v2';
+    protected $testEndpoint = 'https://sandbox.checkout.com/api2/v2';
 
-	public function getSecretApiKey()
-	{
-		return $this->getParameter('secretApiKey');
-	}
-
-	public function setSecretApiKey($value)
-	{
-		return $this->setParameter('secretApiKey', $value);
-	}
-
-	public function getPublicApiKey()
-	{
-		return $this->getParameter('publicApiKey');
-	}
-
-	public function setPublicApiKey($value)
-	{
-		return $this->setParameter('publicApiKey', $value);
-	}
-
-    public function getEndpoint() {
-		if($this->getTestMode()) {
-			return $this->testEndpoint;
-		}
-
-		return $this->liveEndpoint;
-	}
-
-    /**
-     * Get HTTP Method.
-     *
-     * This is nearly always POST but can be over-ridden in sub classes.
-     *
-     * @return string
-     */
-    public function getHttpMethod()
+    public function setSecretApiKey($value)
     {
-        return 'POST';
+        return $this->setParameter('secretApiKey', $value);
+    }
+
+    public function getPublicApiKey()
+    {
+        return $this->getParameter('publicApiKey');
+    }
+
+    public function setPublicApiKey($value)
+    {
+        return $this->setParameter('publicApiKey', $value);
     }
 
     public function sendData($data)
@@ -100,14 +75,40 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             json_encode($data)
         );
 
-		$httpRequest
-			->setHeader('Content-Type', 'application/json;charset=UTF-8')
-			->setHeader('Accept', 'application/json')
-			->setHeader('Authorization', $this->getSecretApiKey());
+        $httpRequest
+            ->setHeader('Content-Type', 'application/json;charset=UTF-8')
+            ->setHeader('Accept', 'application/json')
+            ->setHeader('Authorization', $this->getSecretApiKey());
 
         $httpResponse = $httpRequest->send();
 
         return $this->response = new Response($this, $httpResponse->json());
+    }
+
+    /**
+     * Get HTTP Method.
+     *
+     * This is nearly always POST but can be over-ridden in sub classes.
+     *
+     * @return string
+     */
+    public function getHttpMethod()
+    {
+        return 'POST';
+    }
+
+    public function getEndpoint()
+    {
+        if ($this->getTestMode()) {
+            return $this->testEndpoint;
+        }
+
+        return $this->liveEndpoint;
+    }
+
+    public function getSecretApiKey()
+    {
+        return $this->getParameter('secretApiKey');
     }
 
 //    /**
