@@ -28,6 +28,11 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     protected $liveEndpoint = 'https://api2.checkout.com/v2';
     protected $testEndpoint = 'https://sandbox.checkout.com/api2/v2';
 
+    public function getSecretApiKey()
+    {
+        return $this->getParameter('secretApiKey');
+    }
+
     public function setSecretApiKey($value)
     {
         return $this->setParameter('secretApiKey', $value);
@@ -101,11 +106,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         }
 
         return $this->liveEndpoint;
-    }
-
-    public function getSecretApiKey()
-    {
-        return $this->getParameter('secretApiKey');
     }
 
 //    /**

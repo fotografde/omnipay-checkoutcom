@@ -10,7 +10,7 @@ class CompletePurchaseRequest extends AbstractRequest
         $data = array();
 
         if ($amount = $this->getAmountInteger()) {
-            $data['amount'] = $amount;
+            $data['value'] = $amount;
         }
 
         return $data;
