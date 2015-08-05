@@ -43,6 +43,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('publicApiKey', $value);
     }
 
+    public function getMetadata()
+    {
+        return $this->getParameter('metadata');
+    }
+
+    public function setMetadata($value)
+    {
+        return $this->setParameter('metadata', $value);
+    }
+
     public function sendData($data)
     {
         // don't throw exceptions for 4xx errors
