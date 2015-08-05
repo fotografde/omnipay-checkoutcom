@@ -25,7 +25,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      *
      * @var string URL
      */
-    protected $liveEndpoint = 'https://sandbox.checkout.com/api2/v2'; //https://api2.checkout.com/v2
+    protected $liveEndpoint = 'https://api2.checkout.com/v2';
     protected $testEndpoint = 'https://sandbox.checkout.com/api2/v2';
 
     public function setSecretApiKey($value)
