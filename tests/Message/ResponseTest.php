@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Stripe\Message;
+namespace Omnipay\CheckoutCom\Message;
 
 use Omnipay\Tests\TestCase;
 

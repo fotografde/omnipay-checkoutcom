@@ -10,25 +10,12 @@ namespace Omnipay\CheckoutCom\Message;
  *
  * This is the parent class for all CheckoutCom requests.
  *
- * Test modes:
- *
- * CheckoutCom accounts have test-mode API keys as well as live-mode
- * API keys. These keys can be active at the same time. Data
- * created with test-mode credentials will never hit the credit
- * card networks and will never cost anyone money.
- *
- * Unlike some gateways, there is no test mode endpoint separate
- * to the live mode endpoint, the CheckoutCom API endpoint is the same
- * for test and for live.
- *
- * Setting the testMode flag on this gateway has no effect.  To
- * use test mode just use your test mode API key.
- *
- * You can use any of the cards listed at https://stripe.com/docs/testing
+ * You can use any of the cards listed at
+ * https://www.checkout.com/docs/api/integration-guide/charges/simulator
  * for testing.
  *
  * @see \Omnipay\CheckoutCom\Gateway
- * @link https://stripe.com/docs/api
+ * @link https://www.checkout.com/docs/sandbox/api
  * @method \Omnipay\CheckoutCom\Message\Response send()
  */
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
