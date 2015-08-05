@@ -17,7 +17,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "omnipay/stripe": "~2.0"
+        "fotografde/omnipay-checkoutcom": "~2.0"
     }
 }
 ```
