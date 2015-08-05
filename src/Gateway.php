@@ -5,7 +5,7 @@ namespace Omnipay\CheckoutCom;
 use Omnipay\Common\AbstractGateway;
 
 /**
- * NetBanx Class
+ * CheckoutCom Class
  */
 class Gateway extends AbstractGateway
 {
@@ -47,12 +47,6 @@ class Gateway extends AbstractGateway
         return $this->setParameter('publicApiKey', $value);
     }
 
-    /**
-     * Create a new charge.
-     *
-     * @param array An array of options
-     * @return \Omnipay\ResponseInterface
-     */
     public function purchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\CheckoutCom\Message\PurchaseRequest', $parameters);
@@ -62,5 +56,4 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\CheckoutCom\Message\CompletePurchaseRequest', $parameters);
     }
-
 }
