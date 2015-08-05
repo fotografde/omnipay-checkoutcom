@@ -3,8 +3,9 @@
 **Checkout.com driver for the Omnipay PHP payment processing library**
 
 [![Build Status](https://travis-ci.org/fotografde/omnipay-checkoutcom.png?branch=master)](https://travis-ci.org/fotografde/omnipay-checkoutcom)
-[![Latest Stable Version](https://poser.pugx.org/fotografde/omnipay-checkoutcom/version.png)](https://packagist.org/packages/fotografde/omnipay-checkoutcom)
-[![Total Downloads](https://poser.pugx.org/fotografde/omnipay-checkoutcom/d/total.png)](https://packagist.org/packages/fotografde/omnipay-checkoutcom)
+[![Latest Stable Version](https://poser.pugx.org/fotografde/omnipay-checkoutcom/v/stable)](https://packagist.org/packages/fotografde/omnipay-checkoutcom)
+[![Total Downloads](https://poser.pugx.org/fotografde/omnipay-checkoutcom/downloads)](https://packagist.org/packages/fotografde/omnipay-checkoutcom)
+[![License](https://poser.pugx.org/fotografde/omnipay-checkoutcom/license)](https://packagist.org/packages/fotografde/omnipay-checkoutcom)
 
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements Checkout.com support for Omnipay.
@@ -47,10 +48,7 @@ Start by following the standard Checkout.com JS guide here:
 [http://sandbox.checkout.com/js/v1/docs/Checkout.js_Manual_Sandbox.pdf](http://sandbox.checkout.com/js/v1/docs/Checkout.js_Manual_Sandbox.pdf)
 
 ```php
-$response = $gateway->authorize([
-			'amount' => $amount,
-			'currency' => $currency,
-			])->send();
+$response = $gateway->authorize(['amount' => $amount, 'currency' => $currency])->send();
 if ($response->isSuccessful()) {
     $token = $response->getToken();
 }
