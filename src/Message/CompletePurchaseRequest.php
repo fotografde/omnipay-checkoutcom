@@ -18,6 +18,6 @@ class CompletePurchaseRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return parent::getEndpoint() . '/charges/'.$this->getTransactionReference();
+        return parent::getEndpoint() . '/charges/'.$this->getTransactionReference() . '/capture';
     }
 }
