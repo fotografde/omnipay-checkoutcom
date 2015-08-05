@@ -17,7 +17,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->authorize(array('amount' => '10.00'));
 
-        $this->assertInstanceOf('Omnipay\Stripe\Message\AuthorizeRequest', $request);
+        $this->assertInstanceOf('Omnipay\CheckoutCom\Message\AuthorizeRequest', $request);
         $this->assertSame('10.00', $request->getAmount());
     }
 
@@ -25,7 +25,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->capture(array('amount' => '10.00'));
 
-        $this->assertInstanceOf('Omnipay\Stripe\Message\CaptureRequest', $request);
+        $this->assertInstanceOf('Omnipay\CheckoutCom\Message\CaptureRequest', $request);
         $this->assertSame('10.00', $request->getAmount());
     }
 }
