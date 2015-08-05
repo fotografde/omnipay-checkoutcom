@@ -4,21 +4,19 @@ namespace Omnipay\CheckoutCom\Message;
 
 use Omnipay\Tests\TestCase;
 
-class AuthorizeRequestTest extends TestCase
+class PurchaseRequestTest extends TestCase
 {
     public function setUp()
     {
-        $this->request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
+        $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(
             array(
                 'amount' => '12.00',
                 'currency' => 'USD',
-                'card' => $this->getValidCard(),
                 'description' => 'Order #42',
                 'metadata' => array(
                     'foo' => 'bar',
-                ),
-                'applicationFee' => '1.00'
+                )
             )
         );
     }
@@ -32,25 +30,6 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('Order #42', $data['description']);
         $this->assertSame('false', $data['capture']);
         $this->assertSame(array('foo' => 'bar'), $data['metadata']);
-        $this->assertSame(100, $data['application_fee']);
-    }
-
-    /**
-     * @expectedException \Omnipay\Common\Exception\InvalidRequestException
-     * @expectedExceptionMessage The card parameter is required
-     */
-    public function testCardRequired()
-    {
-        $this->request->setCard(null);
-        $this->request->getData();
-    }
-
-    public function testDataWithCardReference()
-    {
-        $this->request->setCardReference('xyz');
-        $data = $this->request->getData();
-
-        $this->assertSame('xyz', $data['customer']);
     }
 
     public function testDataWithToken()
@@ -59,15 +38,6 @@ class AuthorizeRequestTest extends TestCase
         $data = $this->request->getData();
 
         $this->assertSame('xyz', $data['card']);
-    }
-
-    public function testDataWithCard()
-    {
-        $card = $this->getValidCard();
-        $this->request->setCard($card);
-        $data = $this->request->getData();
-
-        $this->assertSame($card['number'], $data['card']['number']);
     }
 
     public function testSendSuccess()

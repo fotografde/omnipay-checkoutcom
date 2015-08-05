@@ -4,11 +4,11 @@ namespace Omnipay\CheckoutCom\Message;
 
 use Omnipay\Tests\TestCase;
 
-class CaptureRequestTest extends TestCase
+class CompletePurchaseRequestTest extends TestCase
 {
     public function setUp()
     {
-        $this->request = new CaptureRequest($this->getHttpClient(), $this->getHttpRequest());
+        $this->request = new CompletePurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->setTransactionReference('foo');
     }
 
@@ -30,7 +30,7 @@ class CaptureRequestTest extends TestCase
 
     public function testSendSuccess()
     {
-        $this->setMockHttpResponse('CaptureSuccess.txt');
+        $this->setMockHttpResponse('CompletePurchaseSuccess.txt');
         $response = $this->request->send();
 
         $this->assertTrue($response->isSuccessful());
@@ -42,7 +42,7 @@ class CaptureRequestTest extends TestCase
 
     public function testSendError()
     {
-        $this->setMockHttpResponse('CaptureFailure.txt');
+        $this->setMockHttpResponse('CompletePurchaseFailure.txt');
         $response = $this->request->send();
 
         $this->assertFalse($response->isSuccessful());
