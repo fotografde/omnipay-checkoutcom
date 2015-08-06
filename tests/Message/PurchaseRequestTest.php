@@ -12,10 +12,14 @@ class PurchaseRequestTest extends TestCase
         $this->request->initialize(
             array(
                 'amount' => '12.00',
-                'currency' => 'USD',
+                'currency' => 'uSd',
                 'description' => 'Order #42',
                 'metadata' => array(
                     'foo' => 'bar',
+                ),
+                'udf' => array(
+                    'first' => 'lorem',
+                    'second' => 'ipsum'
                 )
             )
         );
@@ -25,19 +29,13 @@ class PurchaseRequestTest extends TestCase
     {
         $data = $this->request->getData();
 
-        $this->assertSame(1200, $data['amount']);
-        $this->assertSame('usd', $data['currency']);
+        $this->assertSame(1200, $data['value']);
+        $this->assertSame('USD', $data['currency']);
         $this->assertSame('Order #42', $data['description']);
-        $this->assertSame('false', $data['capture']);
         $this->assertSame(array('foo' => 'bar'), $data['metadata']);
-    }
+        $this->assertSame('lorem', $data['udf1']);
+        $this->assertSame('ipsum', $data['udf2']);
 
-    public function testDataWithToken()
-    {
-        $this->request->setToken('xyz');
-        $data = $this->request->getData();
-
-        $this->assertSame('xyz', $data['card']);
     }
 
     public function testSendSuccess()
@@ -45,10 +43,9 @@ class PurchaseRequestTest extends TestCase
         $this->setMockHttpResponse('PurchaseSuccess.txt');
         $response = $this->request->send();
 
-        $this->assertTrue($response->isSuccessful());
-        $this->assertFalse($response->isRedirect());
-        $this->assertSame('ch_1IU9gcUiNASROd', $response->getTransactionReference());
-        $this->assertNull($response->getCardReference());
+        $this->assertFalse($response->isSuccessful());
+        $this->assertTrue($response->isRedirect());
+        $this->assertSame('pay_tok_5a010daa-4a30-4171-a8e9-8ae0c6de1c68', $response->getTransactionReference());
         $this->assertNull($response->getMessage());
     }
 
@@ -60,7 +57,6 @@ class PurchaseRequestTest extends TestCase
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertNull($response->getTransactionReference());
-        $this->assertNull($response->getCardReference());
-        $this->assertSame('Your card was declined', $response->getMessage());
+        $this->assertSame('70000: Validation error', $response->getMessage());
     }
 }

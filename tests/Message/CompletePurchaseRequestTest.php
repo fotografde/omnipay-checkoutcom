@@ -19,13 +19,13 @@ class CompletePurchaseRequestTest extends TestCase
 
     public function testAmount()
     {
-        // defualt is no amount
-        $this->assertArrayNotHasKey('value', $this->request->getData());
+        // default is no amount
+        $this->assertNull($this->request->getData());
 
         $this->request->setAmount('10.00');
 
-        $data = $this->request->getData();
-        $this->assertSame(1000, $data['value']);
+        // Changing the Amount should not have any impact. -> CompletePurchaseRequest is a GET with no content
+        $this->assertNull($this->request->getData());
     }
 
     public function testSendSuccess()
@@ -47,7 +47,6 @@ class CompletePurchaseRequestTest extends TestCase
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertNull($response->getTransactionReference());
-        $this->assertNull($response->getCardReference());
-        $this->assertSame('Charge ch_1lvgjcQgrNWUuZ has already been captured.', $response->getMessage());
+        $this->assertSame('70000: Validation error', $response->getMessage());
     }
 }

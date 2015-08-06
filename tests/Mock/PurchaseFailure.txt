@@ -9,10 +9,9 @@ Access-Control-Allow-Credentials: true
 Access-Control-Max-Age: 300
 
 {
-  "error": {
-    "message": "Your card was declined",
-    "type": "card_error",
-    "code": "card_declined",
-    "charge": "ch_1IUAZQWFYrPooM"
-  }
+  "errorCode":"70000",
+  "message":"Validation error",
+  "errors": [
+    "Invalid value for 'value'"
+  ]
 }

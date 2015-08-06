@@ -25,7 +25,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
 
     public function isRedirect()
     {
-        return true;
+        return !isset($this->data['errorCode']);
     }
 
     public function getRedirectMethod()
@@ -36,7 +36,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     public function getRedirectUrl()
     {
         if ($this->isRedirect()) {
-            return $this->redirectEndpoint . '/' . $this->getTransactionReference();
+            return 'placeholder';
         }
     }
 
