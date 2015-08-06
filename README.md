@@ -49,15 +49,15 @@ Start by following the standard Checkout.com JS guide here:
 
 First Authorize:
 ```php
-$response = $gateway->authorize(['amount' => $amount, 'currency' => $currency])->send();
-if ($response->isSuccessful()) {
-    $token = $response->getToken();
+$response = $gateway->purchase(['amount' => $amount, 'currency' => $currency])->send();
+if ($response->isRedirect()) {
+    $token = $response->getTransactionReference();
 }
 ```
 
 Then Capture:
 ```php
-$response = $gateway->caputure(['amount' => $amount, 'transactionReference' => $token])->send();
+$response = $gateway->completePurchase(['amount' => $amount, 'transactionReference' => $token])->send();
 if ($response->isSuccessful()) {
     // approve Order
 }
