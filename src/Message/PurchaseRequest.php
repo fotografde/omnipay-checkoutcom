@@ -17,7 +17,7 @@ class PurchaseRequest extends AbstractRequest
         $this->validate('amount', 'currency');
 
         $data = array();
-        $data['value2'] = $this->getAmountInteger();
+        $data['value'] = $this->getAmountInteger();
         $data['currency'] = strtoupper($this->getCurrency());
         $data['description'] = $this->getDescription();
         $data['metadata'] = $this->getMetadata();
