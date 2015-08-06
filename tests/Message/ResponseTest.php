@@ -4,12 +4,12 @@ namespace Omnipay\CheckoutCom\Message;
 
 use Omnipay\Tests\TestCase;
 
-class ResponseTest extends TestCase
+class AbstractResponseTest extends TestCase
 {
     public function testPurchaseSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->json());
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
@@ -21,7 +21,7 @@ class ResponseTest extends TestCase
     public function testPurchaseFailure()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseFailure.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->json());
 
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
@@ -33,7 +33,7 @@ class ResponseTest extends TestCase
     public function testCreateCardSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('CreateCardSuccess.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->json());
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
@@ -45,7 +45,7 @@ class ResponseTest extends TestCase
     public function testCreateCardFailure()
     {
         $httpResponse = $this->getMockHttpResponse('CreateCardFailure.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->json());
 
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
@@ -57,7 +57,7 @@ class ResponseTest extends TestCase
     public function testUpdateCardSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('UpdateCardSuccess.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->json());
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
@@ -69,7 +69,7 @@ class ResponseTest extends TestCase
     public function testUpdateCardFailure()
     {
         $httpResponse = $this->getMockHttpResponse('UpdateCardFailure.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->json());
 
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
@@ -81,7 +81,7 @@ class ResponseTest extends TestCase
     public function testDeleteCardSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('DeleteCardSuccess.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->json());
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
@@ -93,7 +93,7 @@ class ResponseTest extends TestCase
     public function testDeleteCardFailure()
     {
         $httpResponse = $this->getMockHttpResponse('DeleteCardFailure.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->json());
 
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
