@@ -20,12 +20,12 @@ class CompletePurchaseRequestTest extends TestCase
     public function testAmount()
     {
         // defualt is no amount
-        $this->assertArrayNotHasKey('amount', $this->request->getData());
+        $this->assertArrayNotHasKey('value', $this->request->getData());
 
         $this->request->setAmount('10.00');
 
         $data = $this->request->getData();
-        $this->assertSame(1000, $data['amount']);
+        $this->assertSame(1000, $data['value']);
     }
 
     public function testSendSuccess()
@@ -35,8 +35,7 @@ class CompletePurchaseRequestTest extends TestCase
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
-        $this->assertSame('ch_1lvgjcQgrNWUuZ', $response->getTransactionReference());
-        $this->assertNull($response->getCardReference());
+        $this->assertSame('charge_B41BEAAC175U76BD3EE1', $response->getTransactionReference());
         $this->assertNull($response->getMessage());
     }
 

@@ -65,7 +65,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getUdfValues()
     {
-        if($udf = $this->getUdf()) {
+        if ($udf = $this->getUdf()) {
             return array_values($udf);
         }
 

@@ -6,6 +6,7 @@
 namespace Omnipay\CheckoutCom\Message;
 
 use Omnipay\Common\Message\RedirectResponseInterface;
+
 /**
  * CheckoutCom Response
  *
@@ -35,7 +36,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     public function getRedirectUrl()
     {
         if ($this->isRedirect()) {
-            return $this->redirectEndpoint.'/'.$this->getTransactionReference();
+            return $this->redirectEndpoint . '/' . $this->getTransactionReference();
         }
     }
 
