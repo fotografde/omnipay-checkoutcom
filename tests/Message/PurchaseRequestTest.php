@@ -16,6 +16,10 @@ class PurchaseRequestTest extends TestCase
                 'description' => 'Order #42',
                 'metadata' => array(
                     'foo' => 'bar',
+                ),
+                'udf' => array(
+                    'foo2' => 'bar2',
+                    'sad' => 'dasd',
                 )
             )
         );
@@ -25,11 +29,11 @@ class PurchaseRequestTest extends TestCase
     {
         $data = $this->request->getData();
 
-        $this->assertSame(1200, $data['amount']);
+        $this->assertSame(1200, $data['value']);
         $this->assertSame('usd', $data['currency']);
         $this->assertSame('Order #42', $data['description']);
-        $this->assertSame('false', $data['capture']);
-        $this->assertSame(array('foo' => 'bar'), $data['metadata']);
+        $this->assertSame('bar2', $data['udf1']);
+        $this->assertSame('dasd', $data['udf2']);
     }
 
     public function testDataWithToken()

@@ -19,8 +19,10 @@ class CompletePurchaseRequestTest extends TestCase
 
     public function testAmount()
     {
+        var_dump($this->request->getData());die();
+
         // defualt is no amount
-        $this->assertArrayNotHasKey('value', $this->request->getData());
+        //$this->assertArrayNotHasKey('value', $this->request->getData());
 
         $this->request->setAmount('10.00');
 
