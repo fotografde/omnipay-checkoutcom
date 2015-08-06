@@ -18,10 +18,10 @@ class PurchaseResponseTest extends TestCase
 
         $this->assertSame('GET', $response->getRedirectMethod());
 
-        $expected = [
+        $expected = array(
             'id' => 'pay_tok_5a010daa-4a30-4171-a8e9-8ae0c6de1c68',
             'liveMode' => true
-        ];
+        );
         $this->assertSame($expected, $response->getRedirectData());
 
         $this->assertSame('placeholder', $response->getRedirectUrl());
