@@ -13,16 +13,17 @@ class AbstractRequestTest extends TestCase
         $this->request->initialize();
     }
 
-    public function testCardToken()
+    public function testUdf()
     {
-        $this->assertSame($this->request, $this->request->setCardToken('abc123'));
-        $this->assertSame('abc123', $this->request->getCardToken());
-        $this->assertSame('abc123', $this->request->getToken());
+        $this->assertSame($this->request, $this->request->setUdf(array('foo' => 'bar')));
+        $this->assertSame(array('foo' => 'bar'), $this->request->getUdf());
+        $this->assertSame(array(0 => 'bar'), $this->request->getUdfValues());
     }
 
     public function testMetadata()
     {
         $this->assertSame($this->request, $this->request->setMetadata(array('foo' => 'bar')));
         $this->assertSame(array('foo' => 'bar'), $this->request->getMetadata());
+
     }
 }

@@ -13,6 +13,12 @@ class CompletePurchaseRequest extends AbstractRequest
         return 'GET';
     }
 
+    public function sendData($data) {
+        $httpResponse = $this->sendRequest($data);
+
+        return $this->response = new CompletePurchaseResponse($this, $httpResponse->json());
+    }
+
     public function getEndpoint()
     {
         return parent::getEndpoint() . '/charges/'.$this->getTransactionReference();

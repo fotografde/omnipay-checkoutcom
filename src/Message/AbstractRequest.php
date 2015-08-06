@@ -63,12 +63,21 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->getParameter('udf');
     }
 
+    public function getUdfValues()
+    {
+        if($udf = $this->getUdf()) {
+            return array_values($udf);
+        }
+
+        return false;
+    }
+
     public function setUdf($value)
     {
         return $this->setParameter('udf', $value);
     }
 
-    public function sendData($data)
+    public function sendRequest($data)
     {
         // don't throw exceptions for 4xx errors
         $this->httpClient->getEventDispatcher()->addListener(
@@ -92,9 +101,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             ->setHeader('Accept', 'application/json')
             ->setHeader('Authorization', $this->getSecretApiKey());
 
-        $httpResponse = $httpRequest->send();
-
-        return $this->response = new Response($this, $httpResponse->json());
+        return $httpRequest->send();
     }
 
     /**

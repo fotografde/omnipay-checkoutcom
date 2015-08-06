@@ -9,49 +9,90 @@ Access-Control-Max-Age: 300
 Access-Control-Allow-Credentials: true
 
 {
-  "id": "ch_1lvgjcQgrNWUuZ",
-  "object": "charge",
-  "created": 1367743707,
-  "livemode": false,
-  "paid": true,
-  "amount": 1000,
-  "currency": "usd",
-  "refunded": false,
-  "fee": 59,
-  "fee_details": [
-    {
-      "amount": 59,
-      "currency": "usd",
-      "type": "stripe_fee",
-      "description": "Stripe processing fees",
-      "application": null,
-      "amount_refunded": 0
-    }
-  ],
-  "card": {
-    "object": "card",
-    "last4": "4242",
-    "type": "Visa",
-    "exp_month": 9,
-    "exp_year": 2015,
-    "fingerprint": "dfB0t0avO0bWr9eY",
-    "country": "US",
-    "name": "fdsa asdf",
-    "address_line1": "",
-    "address_line2": "",
-    "address_city": "",
-    "address_state": "",
-    "address_zip": "",
-    "address_country": "",
-    "cvc_check": "pass",
-    "address_line1_check": "pass",
-    "address_zip_check": "pass"
-  },
-  "captured": true,
-  "failure_message": null,
-  "amount_refunded": 0,
-  "customer": null,
-  "invoice": null,
-  "description": "",
-  "dispute": null
+    "id": "charge_B41BEAAC175U76BD3EE1",
+    "liveMode": true,
+    "created": "2015-04-07T16:31:58Z",
+    "value": 4298,
+    "currency": "usd",
+    "trackId": "TRK12345",
+    "description": "charge description",
+    "email": "LanaSMartin@dayrep.com",
+    "chargeMode": 1,
+    "transactionIndicator": 1,
+    "customerIp": "96.125.365.51",
+    "responseMessage": "Approved",
+    "responseAdvancedInfo": "Approved",
+    "responseCode": "10000",
+    "status": "Authorised",
+    "authCode": "634622",
+    "isCascaded": false,
+    "autoCapture": "N",
+    "autoCapTime": 0,
+    "card": {
+        "id": "card_6AF19164-3233-4825-BEF9-143F04DA2E94",
+        "last4": "4242",
+        "paymentMethod": "Visa",
+        "fingerprint": "C96C9E67-DF9A-442A-93C5-CEEE7955314B",
+        "customerId": "cust_81AEE254-49C6-4AA0-A775-993669C5BDAD",
+        "name": "Sim Haag",
+        "expiryMonth": "06",
+        "expiryYear": "2018",
+        "billingDetails": {
+            "addressLine1": "72 Myrna Parkways",
+            "addressLine2": "Hoppe Fork",
+            "postcode": "aq81ct",
+            "country": "US",
+            "city": "Serenamouth",
+            "state": "Luzmouth",
+            "phone": {
+                "countryCode": "44",
+                "number": "12345678"
+            }
+        },
+        "cvvCheck": "Y",
+        "avsCheck": "S",
+        "responseCode": null
+    },
+    "metadata": {
+        "key1": "value1"
+    },
+    "shippingDetails": {
+        "addressLine1": "333 Cormier Bypass",
+        "addressLine2": "Rolfson Alley",
+        "postcode": "ue0 2ou",
+        "country": "US",
+        "city": "Schmittchester",
+        "state": "Jakubowskiton",
+        "phone": {
+            "countryCode": "44",
+            "number": "12345678"
+        }
+    },
+    "products": [
+        {
+            "description": "Tablet 1 gold limited",
+            "image": null,
+            "name": "Tablet 1 gold limited",
+            "price": 100,
+            "quantity": 1,
+            "shippingCost": 10,
+            "sku": "1aab2aa",
+            "trackingUrl": "https://www.tracker.com"
+        },
+        {
+            "description": "Tablet 2 gold limited",
+            "image": null,
+            "name": "Tablet 2 gold limited",
+            "price": 200,
+            "quantity": 2,
+            "shippingCost": 10,
+            "sku": "1aab2aa",
+            "trackingUrl": "https://www.tracker.com"
+        }
+    ],
+    "udf1": "udf 1 value",
+    "udf2": "udf 2 value",
+    "udf3": "udf 3 value",
+    "udf4": "udf 4 value",
+    "udf5": "udf 5 value"
 }

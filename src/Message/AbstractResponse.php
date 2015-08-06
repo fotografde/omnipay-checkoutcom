@@ -5,8 +5,6 @@
 
 namespace Omnipay\CheckoutCom\Message;
 
-use Omnipay\Common\Message\AbstractResponse;
-
 /**
  * CheckoutCom Response
  *
@@ -14,14 +12,14 @@ use Omnipay\Common\Message\AbstractResponse;
  *
  * @see \Omnipay\CheckoutCom\Gateway
  */
-class Response extends AbstractResponse
+class AbstractResponse extends \Omnipay\Common\Message\AbstractResponse
 {
     /**
      * Get a token, for createCard requests.
      *
      * @return string|null
      */
-    public function getToken()
+    public function getTransactionReference()
     {
         return $this->data['id'];
     }
@@ -35,7 +33,7 @@ class Response extends AbstractResponse
      */
     public function getMessage()
     {
-        if (!$this->isSuccessful()) {
+        if (!$this->isSuccessful() && isset($this->data['errorCode'])) {
             return $this->data['errorCode'] . ': ' . $this->data['message'];
         }
 

@@ -22,7 +22,7 @@ class PurchaseRequest extends AbstractRequest
         $data['description'] = $this->getDescription();
         $data['metadata'] = $this->getMetadata();
 
-        if($udf = array_values($this->getUdf())) {
+        if ($udf = $this->getUdfValues()) {
             $data['udf1'] = $udf[0];
             $data['udf2'] = isset($udf[1]) ? $udf[1] : null;
             $data['udf3'] = isset($udf[2]) ? $udf[2] : null;
@@ -32,8 +32,8 @@ class PurchaseRequest extends AbstractRequest
 
 //        if ($this->getCardReference()) {
 //            $data['customer'] = $this->getCardReference();
-//        } elseif ($this->getToken()) {
-//            $data['card'] = $this->getToken();
+//        } elseif ($this->getTransactionReference()) {
+//            $data['card'] = $this->getTransactionReference();
 //        } elseif ($this->getCard()) {
 //            $data['card'] = $this->getCardData();
 //        } else {
@@ -42,6 +42,12 @@ class PurchaseRequest extends AbstractRequest
 //        }
 
         return $data;
+    }
+
+    public function sendData($data) {
+        $httpResponse = $this->sendRequest($data);
+
+        return $this->response = new PurchaseResponse($this, $httpResponse->json());
     }
 
     public function getEndpoint()
