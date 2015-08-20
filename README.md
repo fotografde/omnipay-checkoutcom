@@ -47,6 +47,9 @@ another token, which you can use to capture the payment.
 Start by following the standard Checkout.com JS guide here:
 [http://sandbox.checkout.com/js/v1/docs/Checkout.js_Manual_Sandbox.pdf](http://sandbox.checkout.com/js/v1/docs/Checkout.js_Manual_Sandbox.pdf)
 
+Full documentation of the API can be found here:
+[https://www.checkout.com/docs/sandbox/api/integration-guide/introduction](https://www.checkout.com/docs/sandbox/api/integration-guide/introduction)
+
 First Authorize:
 ```php
 $response = $gateway->purchase(['amount' => $amount, 'currency' => $currency])->send();
