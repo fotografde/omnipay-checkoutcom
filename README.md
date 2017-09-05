@@ -39,6 +39,10 @@ repository.
 
 ### Checkout.js
 
+Currently this package provides implementation of 2 workflows:
+
+#### 1. Authorize payment and then capture
+
 The Checkout.com integration is fairly straight forward.
 Essentially you just pass the order data and receive a payment token, which you
 can use in the checkout.js payment form. After your customer has entered his data, you'll receive
@@ -65,6 +69,23 @@ if ($response->isSuccessful()) {
     // approve Order
 }
 ```
+
+#### 2. Payment with card token (card token purchase)
+
+- In this method we first validate card data via form and js provided from Checkout.com, see [https://docs.checkout.com/getting-started/checkoutkit-js](https://docs.checkout.com/getting-started/checkoutkit-js)
+- After card is validated, we receive card token ([https://docs.checkout.com/getting-started/checkoutkit-js#example](https://docs.checkout.com/getting-started/checkoutkit-js#example))
+- in the final step we complete payment providing order data and a card token:
+```php
+$response = $gateway->cardTokenPurchase([
+    'amount' => $amount, 
+    'currency' => $currency, 
+    'email' => 'customer@email.com', 
+    'cardToken' => 'some_token', 
+    'description' => 'some nice description'
+]);
+```
+
+Note that `amount`, `currency`, `email` and `cardToken` are required fields here.
 
 ## Support
 

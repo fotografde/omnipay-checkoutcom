@@ -1,0 +1,77 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 05 May 2013 08:51:15 GMT
+Content-Type: application/json;charset=utf-8
+Content-Length: 997
+Connection: keep-alive
+Cache-Control: no-cache, no-store
+Access-Control-Max-Age: 300
+Access-Control-Allow-Credentials: true
+
+{
+    "id": "charge_test_DD0BF9EC548R752B79E2",
+    "liveMode": false,
+    "created": "2017-09-05T10:18:06Z",
+    "value": 319,
+    "currency": "EUR",
+    "trackId": null,
+    "description": "Order Key: 20479114249",
+    "email": "test@solutica.de",
+    "chargeMode": 1,
+    "transactionIndicator": 1,
+    "customerIp": null,
+    "responseMessage": "Approved",
+    "responseAdvancedInfo": "Approved",
+    "responseCode": "10000",
+    "status": "Authorised",
+    "authCode": "373865",
+    "isCascaded": false,
+    "autoCapture": "Y",
+    "autoCapTime": 0,
+    "card": {
+        "customerId": "cust_EC34DF5E-7A0E-43C3-868F-170DA09B0DD6",
+        "expiryMonth": "06",
+        "expiryYear": "2018",
+        "billingDetails": {
+            "addressLine1": null,
+            "addressLine2": null,
+            "postcode": null,
+            "country": null,
+            "city": null,
+            "state": null,
+            "phone": []
+        },
+        "id": "card_52069248-88D6-43CF-8EA1-2A6104EB1593",
+        "last4": "4242",
+        "bin": "424242",
+        "paymentMethod": "Visa",
+        "fingerprint": "F639CAB2745BEE4140BF86DF6B6D6E255C5945AAC3788D923FA047EA4C208622",
+        "name": null,
+        "cvvCheck": "Y",
+        "avsCheck": "S"
+    },
+    "riskCheck": true,
+    "customerPaymentPlans": null,
+    "metadata": {
+        "ordernumber": "424",
+        "invoicenumber": "408",
+        "order_id": "59ae7a0a-353c-435d-a9b4-4b897f000102",
+        "customer_id": "57977215-2990-4354-a733-3db4c0a8171f",
+        "customer_name": "Testvorname Testnachname"
+    },
+    "shippingDetails": {
+        "addressLine1": null,
+        "addressLine2": null,
+        "postcode": null,
+        "country": null,
+        "city": null,
+        "state": null,
+        "phone": []
+    },
+    "products": [],
+    "udf1": "Order-No:424",
+    "udf2": "Invoice-No:408",
+    "udf3": "Order-Id:59ae7a0a-353c-435d-a9b4-4b897f000102",
+    "udf4": "Customer-Id:57977215-2990-4354-a733-3db4c0a8171f",
+    "udf5": null
+}
