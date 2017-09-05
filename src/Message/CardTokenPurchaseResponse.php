@@ -15,20 +15,20 @@ namespace Omnipay\CheckoutCom\Message;
 class CardTokenPurchaseResponse extends AbstractResponse
 {
 
-	public function isSuccessful()
-	{
-		if (!empty($this->data['errorCode'])) {
-			return false;
-		}
+    public function isSuccessful()
+    {
+        if (!empty($this->data['errorCode'])) {
+            return false;
+        }
 
-		if (!empty($this->data['status'])) {
-			return ($this->data['status'] == 'Authorised');
-		}
+        if (!empty($this->data['status'])) {
+            return ($this->data['status'] == 'Authorised');
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
+    /**
      * Get the error message from the response.
      *
      * Returns null if the request was successful.
@@ -42,7 +42,7 @@ class CardTokenPurchaseResponse extends AbstractResponse
         }
 
         if (!$this->isSuccessful() && isset($this->data['responseCode'])) {
-        	return $this->data['responseCode'] . ': ' . $this->data['responseMessage'];
+            return $this->data['responseCode'] . ': ' . $this->data['responseMessage'];
         }
 
         return null;
