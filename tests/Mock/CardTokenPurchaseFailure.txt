@@ -1,0 +1,77 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 05 May 2013 08:51:15 GMT
+Content-Type: application/json;charset=utf-8
+Content-Length: 997
+Connection: keep-alive
+Cache-Control: no-cache, no-store
+Access-Control-Max-Age: 300
+Access-Control-Allow-Credentials: true
+
+{
+    "id": "charge_test_EE0E09FC548L752B6C12",
+    "liveMode": false,
+    "created": "2017-09-05T11:47:36Z",
+    "value": 319,
+    "currency": "EUR",
+    "trackId": null,
+    "description": "Order Key: 20479114264",
+    "email": "test@solutica.de",
+    "chargeMode": 1,
+    "transactionIndicator": 1,
+    "customerIp": null,
+    "responseMessage": "Bad Track Data",
+    "responseAdvancedInfo": "Bad Track Data",
+    "responseCode": "20087",
+    "status": "Declined",
+    "authCode": "000000",
+    "isCascaded": false,
+    "autoCapture": "Y",
+    "autoCapTime": 0,
+    "card": {
+        "customerId": "cust_EC34DF5E-7A0E-43C3-868F-170DA09B0DD6",
+        "expiryMonth": "06",
+        "expiryYear": "2025",
+        "billingDetails": {
+            "addressLine1": null,
+            "addressLine2": null,
+            "postcode": null,
+            "country": null,
+            "city": null,
+            "state": null,
+            "phone": []
+        },
+        "id": "",
+        "last4": "4242",
+        "bin": "424242",
+        "paymentMethod": "Visa",
+        "fingerprint": "9F3BAD2E48C6C8579F2F5DC0710B7C11A8ACD5072C3363A72579A6FB227D64BE",
+        "name": null,
+        "cvvCheck": "D",
+        "avsCheck": "S"
+    },
+    "riskCheck": true,
+    "customerPaymentPlans": null,
+    "metadata": {
+        "ordernumber": "426",
+        "invoicenumber": "410",
+        "order_id": "59ae8f05-e750-4922-99c0-5e527f000102",
+        "customer_id": "57977215-2990-4354-a733-3db4c0a8171f",
+        "customer_name": "Testvorname Testnachname"
+    },
+    "shippingDetails": {
+        "addressLine1": null,
+        "addressLine2": null,
+        "postcode": null,
+        "country": null,
+        "city": null,
+        "state": null,
+        "phone": []
+    },
+    "products": [],
+    "udf1": "Order-No:426",
+    "udf2": "Invoice-No:410",
+    "udf3": "Order-Id:59ae8f05-e750-4922-99c0-5e527f000102",
+    "udf4": "Customer-Id:57977215-2990-4354-a733-3db4c0a8171f",
+    "udf5": null
+}

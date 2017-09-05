@@ -57,4 +57,9 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\CheckoutCom\Message\CompletePurchaseRequest', $parameters);
     }
+
+    public function cardTokenPurchase(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\CheckoutCom\Message\CardTokenPurchaseRequest', $parameters);
+    }
 }

@@ -28,4 +28,12 @@ class GatewayTest extends GatewayTestCase
         $this->assertInstanceOf('Omnipay\CheckoutCom\Message\CompletePurchaseRequest', $request);
         $this->assertSame('10.00', $request->getAmount());
     }
+
+    public function testCardTokenPurchase()
+    {
+        $request = $this->gateway->cardTokenPurchase(array('amount' => '10.00'));
+
+        $this->assertInstanceOf('Omnipay\CheckoutCom\Message\CardTokenPurchaseRequest', $request);
+        $this->assertSame('10.00', $request->getAmount());
+    }
 }
