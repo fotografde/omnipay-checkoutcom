@@ -23,7 +23,7 @@ class CardTokenPurchaseRequest extends AbstractRequest
         $data['metadata'] = $this->getMetadata();
         $data['cardToken'] = $this->getCardToken();
         $data['email'] = $this->getEmail();
-
+        $data['customerName'] = $this->getCustomerName();
 
         if ($udf = $this->getUdfValues()) {
             $data['udf1'] = $udf[0];
